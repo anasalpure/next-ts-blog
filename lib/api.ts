@@ -4,12 +4,22 @@ export function getBaseURL(path: string = "") {
     "https://microservice.newsifier.com/api/v2"
   }${path}`;
 }
+type IOptions = {
+  headers: {
+    "Content-Type": string;
+    "X-Tenant": string;
+    "x-visitor": string;
+    visitor: string;
+    origin: string;
+    Authorization?: string;
+  };
+};
 
 // Helper to make GET requests to Strapi
 export async function fetchAPI(path: string, isAuth: boolean = true) {
   let response;
   let requestUrl;
-  const options = {
+  const options: IOptions = {
     headers: {
       "Content-Type": "application/json",
       "X-Tenant": "androidworld.newsifier.com",
